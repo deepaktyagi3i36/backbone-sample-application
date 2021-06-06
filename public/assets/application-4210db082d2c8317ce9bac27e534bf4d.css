@@ -1,0 +1,66 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+/* line 5, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons {
+  padding: 20px;
+  background-color: #effdf5;
+}
+/* line 9, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons h1 {
+  padding: 20px;
+  background-color: #2a5757;
+  text-align: center;
+  color: white;
+}
+/* line 16, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons form {
+  padding: 20px;
+  text-align: center;
+  color: white;
+  background-color: #2a5757;
+}
+/* line 22, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons form .field {
+  float: left;
+}
+/* line 24, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons form .field label {
+  font-size: 20px;
+}
+/* line 28, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons form .actions input {
+  text-align: center;
+  font-size: 20px;
+  background-color: lightgreen;
+}
+/* line 35, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons table {
+  padding: 20px;
+  background-color: lightgray;
+  width: 100%;
+}
+/* line 40, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons table tr > th, #persons table td {
+  width: 18%;
+  border: 1px solid black;
+}
+/* line 43, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons table tr > th.action, #persons table td.action {
+  width: 10%;
+}
+/* line 46, /home/deepak/work/tests/test_pr/app/assets/stylesheets/person.css.scss */
+#persons table tr > th span.error, #persons table td span.error {
+  color: red;
+}
