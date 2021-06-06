@@ -1,0 +1,9 @@
+<div id="persons"></div>
+
+<script type="text/javascript">
+  $(function() {
+    // TestProject is the app name
+    window.router = new TestProject.Routers.PersonsRouter({persons: <%= @persons.to_json.html_safe -%>});
+    Backbone.history.start();
+  });
+</script>

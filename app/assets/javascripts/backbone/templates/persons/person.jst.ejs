@@ -1,0 +1,21 @@
+<% if (!has_error) { %>
+	<td><%= first_name %></td>
+	<td><%= last_name %></td>
+	<td><%= email %></td>
+	<td><%= phone %></td>
+	<td></td>
+	<td></td>
+<% } %> 
+
+<% if (has_error) { %>
+	<td><input type="text" name="first_name" value="<%= first_name %>" ></td>
+  <td><input type="text" name="last_name" value="<%= last_name %>" ></td>
+  <td><input type="text" name="email" value="<%= email %>" ></td>
+  <td><input type="text" name="phone" value="<%= phone %>" ></td>
+  <td><span class='error'> <%= error_message %> </span></td>
+  <td class='action'>
+    <form class="error-person" name="person">
+      <input type="submit" value="Save" />
+    </form>
+  </td>  
+<% } %>
