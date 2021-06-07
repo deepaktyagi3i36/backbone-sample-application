@@ -2,34 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#persons{
+#persons {
 	padding: 20px;
 	background-color: rgb(239, 253, 245);
 
-  h1 {
-    padding: 20px;
-    background-color: rgb(42, 87, 87);
-    text-align: center;
-    color: white;
-  }
+	h1 {
+		padding: 20px;
+		background-color: rgb(42, 87, 87);
+		text-align: center;
+		color: white;
+	}
 
 	form {
 		padding: 20px;
-    text-align: center;
-    color: white;
+		text-align: center;
+		color: white;
 		background-color: rgb(42, 87, 87);
 
-    .field {
-      float: left;
-      label {
-        font-size: 20px;
-      }
-    }
-    .actions input {
-      text-align: center;
-      font-size: 20px;
-      background-color: lightgreen;
-    }
+		.field {
+			float: left;
+			label {
+				font-size: 20px;
+			}
+		}
+		.actions input {
+			text-align: center;
+			font-size: 20px;
+			background-color: lightgreen;
+		}
 	}
 
 	table {
@@ -37,15 +37,15 @@
 		background-color: lightgray;
 		width: 100%;
 
-		tr > th, td{
+		tr > th, td {
 			width: 18%;
 			border: 1px solid black;
-      &.action {
-        width: 10%;
-      }
-      span.error {
-        color: red;
-      }
+			&.action {
+				width: 10%;
+			}
+			span.error {
+				color: red;
+			}
 		}
 	}
 }

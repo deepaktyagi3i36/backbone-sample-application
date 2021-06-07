@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessor :has_error, :error_message
+	attr_accessor :has_error, :error_message
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true
@@ -10,6 +10,6 @@ class Person < ActiveRecord::Base
 
 	private
 	def set_errors
-    self.error_message = self.try(:errors).try(:full_messages)
+		self.error_message = self.try(:errors).try(:full_messages)
 	end
 end
