@@ -1,7 +1,7 @@
 require 'csv'
 
 class PersonsController < ApplicationController
-	# GET /persons
+	
   # GET /persons.json
   def index
     @persons = Person.all
@@ -20,26 +20,18 @@ class PersonsController < ApplicationController
     end
   end
 
+  # POST /persons/bulk_upload.json
 	def bulk_upload
-    data = []
+    person_data = []
 
     CSV.parse(person_params[:person_data], headers: true) do |row|
-      data << row.to_hash
+      person_data << row.to_hash
     end
 
-    data.each do |p|
-      person = Person.new(p)
-      if person.save
-        p[:id] = person.id
-        p[:has_error] = false
-      else
-        p[:has_error] = true
-        p[:error_message] = person.errors.full_messages
-      end
-    end
+    @persons = Person.create(person_data)
 
     respond_to do |format|
-      format.json { render json: { data: data }.to_json, status: :ok }
+      format.json { render collected_success_json_response }
     end
   end
 
@@ -50,17 +42,38 @@ class PersonsController < ApplicationController
 			params.require(:person).permit(:first_name, :last_name, :email, :phone, :person_data)
 		end
 
-    def success_json_response
-      { 
-        json: JSON.parse(@person.to_json).merge!({ has_error: false }).to_json,
+    # Collected persons response
+    def collected_success_json_response
+      person_response = @persons.collect do |person| 
+        { 
+          first_name: person.first_name,
+          last_name: person.last_name,
+          email: person.email,
+          phone: person.phone,
+          has_error: !person.valid?, 
+          error_message: person.error_message
+        }
+      end
+      
+      {
+        json: { person_data: person_response }.to_json,
         status: :created
       }
     end
 
+    # Collected person response
+    def success_json_response
+      { 
+        json: JSON.parse(@person.to_json).merge!({ has_error: !@person.valid? }).to_json,
+        status: :created
+      }
+    end
+
+    # Collected person error response
     def error_json_response
       { 
         json: { 
-          has_error: @person.has_error, 
+          has_error: !@person.valid?, 
           error_message: @person.error_message
         }.to_json, 
         

@@ -30,7 +30,7 @@ class TestProject.Views.Persons.IndexView extends Backbone.View
     @collection.create(@model.toJSON(),
       url: BULK_UPLOAD_URL
       success: (persons) =>
-        persons.changed.data.forEach (person) ->
+        persons.changed.person_data.forEach (person) ->
           model = new self.collection.model()
           model.set(person)
           self.addOne(model)

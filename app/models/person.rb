@@ -10,7 +10,6 @@ class Person < ActiveRecord::Base
 
 	private
 	def set_errors
-		self.has_error = true
-		self.error_message = self.errors.full_messages
+    self.error_message = self.try(:errors).try(:full_messages)
 	end
 end
