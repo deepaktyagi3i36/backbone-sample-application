@@ -11,12 +11,10 @@ class PersonsController < ApplicationController
   def create
     @person = Person.new(person_params)
 
-    respond_to do |format|
-      if @person.save
-        format.json { render success_json_response }
-      else
-        format.json { render error_json_response }
-      end
+    if @person.save
+      render success_json_response
+    else
+      render error_json_response
     end
   end
 
@@ -30,9 +28,7 @@ class PersonsController < ApplicationController
 
     @persons = Person.create(person_data)
 
-    respond_to do |format|
-      format.json { render collected_success_json_response }
-    end
+    render collected_success_json_response
   end
 
   private
@@ -63,8 +59,17 @@ class PersonsController < ApplicationController
 
   # Collected person response
   def success_json_response
-    { 
-      json: JSON.parse(@person.to_json).merge!({ has_error: !@person.valid? }).to_json,
+    {
+      json: {
+        id: @person.id,
+        first_name: @person.first_name,
+        last_name: @person.last_name,
+        email: @person.email,
+        phone: @person.phone,
+        has_error: !@person.valid?, 
+        error_message: @person.error_message
+      }.to_json,
+      
       status: :created
     }
   end
